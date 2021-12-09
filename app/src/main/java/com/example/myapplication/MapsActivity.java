@@ -1,9 +1,12 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -13,6 +16,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -35,13 +39,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ActivityMapsBinding binding;
     List<Address> listGeoCoder;
     private static final int LOCATION_PERMISSION_CODE = 101;
-    private boolean mLocationPermissionGranted = false;
+    private boolean enriques = false;
     private FusedLocationProviderClient mFusedLocationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.expanded_item);
 
 
 
@@ -59,8 +63,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 e.printStackTrace();
             }
 
-           // double longitude = listGeoCoder.get(0).getLongitude();
-         //   double latitude = listGeoCoder.get(0).getLatitude();
+            //double longitude = listGeoCoder.get(0).getLongitude();
+            //double latitude = listGeoCoder.get(0).getLatitude();
 
 
         }
@@ -68,6 +72,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             requestLocationPermission();
         }
     }
+
+
 
     @SuppressLint("MissingPermission")
     private void getLastKnownLocation(){
